@@ -5,8 +5,9 @@ Tienda demostrativa construida con React, Vite y Bootstrap. El catálogo retro s
 ## Funcionalidades
 
 - Carga asíncrona del catálogo desde `public/data/productos.json` mediante `fetch`.
-- Imágenes de consolas servidas localmente desde `public/img/`.
-- Búsqueda en tiempo real por nombre, descripción o categoría.
+- Imágenes de consolas y accesorios servidas localmente desde `public/img/`.
+- Filtro por categoría (consolas vintage, joysticks y mandos, tarjetas de memoria, conectores y cables).
+- Búsqueda en tiempo real por nombre, descripción o categoría, con sugerencias de títulos coincidentes.
 - Carrito que conserva nombre, imagen, precio y cantidad de cada producto.
 - Precios del catálogo expresados en pesos chilenos (CLP).
 - Controles para aumentar/disminuir unidades, quitar artículos y consultar subtotales y total.
@@ -56,7 +57,7 @@ Al desplegar, Vite antepone automáticamente la base del sitio a las rutas del J
 
 ```text
 public/
-├── data/productos.json             Catálogo editable de consolas
+├── data/productos.json             Catálogo editable de consolas y accesorios
 └── img/                             Imágenes locales de consolas y encabezado
 src/
 ├── components/
@@ -88,7 +89,8 @@ Captura estas vistas desde el navegador y adjúntalas en la plataforma de entreg
 
 1. `catalogo.png`: catálogo cargado desde el JSON con productos e imágenes locales.
 2. `busqueda.png`: búsqueda escrita y tarjetas filtradas.
-3. `carrito.png`: artículo con más de una unidad, controles de cantidad, subtotal y total.
-4. `error-catalogo.png`: estado de error con el botón **Reintentar** (se puede verificar temporalmente sin conexión).
+3. `categoria.png`: filtros de consolas vintage, joysticks/mandos, tarjetas de memoria y conectores/cables.
+4. `carrito.png`: artículo con más de una unidad, controles de cantidad, subtotal y total.
+5. `error-catalogo.png`: estado de error con el botón **Reintentar** (se puede verificar temporalmente sin conexión).
 
 El JSON es estático: para actualizar el catálogo publicado, modifica el archivo y vuelve a desplegar el sitio.

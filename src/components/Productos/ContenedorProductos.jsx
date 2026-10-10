@@ -4,7 +4,7 @@ import IndicadorCarga from '../IndicadorCarga.jsx'
 import { cargarProductos } from '../../services/productos.js'
 import mostrarProductos from './ListaProductos.jsx'
 
-function ContenedorProductos({ terminoBusqueda }) {
+function ContenedorProductos({ terminoBusqueda, categoria, onProductosCargados }) {
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(true)
     const [error, setError] = useState('')
@@ -20,6 +20,7 @@ function ContenedorProductos({ terminoBusqueda }) {
             try {
                 const productosCargados = await cargarProductos({ signal: controller.signal })
                 setProductos(productosCargados)
+                onProductosCargados(productosCargados)
             } catch (errorCarga) {
                 if (errorCarga.name !== 'AbortError') {
                     console.error('No se pudo cargar el catálogo local.', errorCarga)
@@ -32,17 +33,18 @@ function ContenedorProductos({ terminoBusqueda }) {
 
         obtenerProductos()
         return () => controller.abort()
-    }, [intento])
+    }, [intento, onProductosCargados])
 
     const productosFiltrados = useMemo(() => {
         const consulta = terminoBusqueda.trim().toLocaleLowerCase()
-        if (!consulta) return productos
+        const categoriaNormalizada = categoria.trim().toLocaleLowerCase()
 
         return productos.filter((producto) =>
-            [producto.titulo, producto.descripcion, producto.categoria]
-                .some((campo) => campo?.toLocaleLowerCase().includes(consulta))
+            (!categoriaNormalizada || producto.categoria.toLocaleLowerCase() === categoriaNormalizada) &&
+            (!consulta || [producto.titulo, producto.descripcion, producto.categoria]
+                .some((campo) => campo?.toLocaleLowerCase().includes(consulta)))
         )
-    }, [productos, terminoBusqueda])
+    }, [productos, terminoBusqueda, categoria])
 
     if (cargando) return <IndicadorCarga />
     if (error) {

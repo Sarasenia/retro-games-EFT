@@ -9,6 +9,8 @@ import { useState } from 'react'
 
 function App() {
   const [terminoBusqueda, setTerminoBusqueda] = useState('')
+  const [categoria, setCategoria] = useState('')
+  const [productosCatalogo, setProductosCatalogo] = useState([])
 
   return <CarritoProvider>
     <div className="contenedor">
@@ -21,11 +23,21 @@ function App() {
       </div>
 
       <div className="menu">
-        <Menu terminoBusqueda={terminoBusqueda} onCambiarBusqueda={setTerminoBusqueda} />
+        <Menu
+          terminoBusqueda={terminoBusqueda}
+          onCambiarBusqueda={setTerminoBusqueda}
+          productos={productosCatalogo}
+          categoria={categoria}
+          onCambiarCategoria={setCategoria}
+        />
       </div>
 
       <div className="principal">
-        <Principal terminoBusqueda={terminoBusqueda} />
+        <Principal
+          terminoBusqueda={terminoBusqueda}
+          categoria={categoria}
+          onProductosCargados={setProductosCatalogo}
+        />
       </div>
 
       <Footer />
