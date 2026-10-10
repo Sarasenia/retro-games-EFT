@@ -1,0 +1,122 @@
+[
+  {
+    "id": "gamecube",
+    "titulo": "Nintendo GameCube",
+    "descripcion": "Consola de sobremesa de Nintendo",
+    "categoria": "Consolas vintage",
+    "precio": 70000,
+    "imagen": "img/gameCube.png"
+  },
+  {
+    "id": "game-boy-advance",
+    "titulo": "Game Boy Advance",
+    "descripcion": "Consola portátil de Nintendo",
+    "categoria": "Consolas vintage",
+    "precio": 60000,
+    "imagen": "img/gameBoyAdvance.jpg"
+  },
+  {
+    "id": "game-boy",
+    "titulo": "Game Boy",
+    "descripcion": "Consola portátil clásica de Nintendo",
+    "categoria": "Consolas vintage",
+    "precio": 45000,
+    "imagen": "img/gameBoy.jpg"
+  },
+  {
+    "id": "dreamcast",
+    "titulo": "Sega Dreamcast",
+    "descripcion": "Consola de sobremesa de Sega",
+    "categoria": "Consolas vintage",
+    "precio": 80000,
+    "imagen": "img/dreamcast.jpg"
+  },
+  {
+    "id": "playstation-1",
+    "titulo": "PlayStation 1",
+    "descripcion": "Consola clásica de Sony",
+    "categoria": "Consolas vintage",
+    "precio": 65000,
+    "imagen": "img/ps1.png"
+  },
+  {
+    "id": "nintendo-ds",
+    "titulo": "Nintendo DS",
+    "descripcion": "Consola portátil de doble pantalla de Nintendo",
+    "categoria": "Consolas vintage",
+    "precio": 75000,
+    "imagen": "img/nintendoDS.png"
+  },
+  {
+    "id": "memory-card-playstation",
+    "titulo": "Memory Card para PlayStation",
+    "descripcion": "Tarjeta de memoria para guardar partidas de PlayStation.",
+    "categoria": "Tarjetas de memoria",
+    "precio": 15000,
+    "imagen": "img/memory-card-play-station.jpg"
+  },
+  {
+    "id": "vmu-dreamcast",
+    "titulo": "VMU para Dreamcast",
+    "descripcion": "Unidad de memoria visual compatible con Dreamcast.",
+    "categoria": "Tarjetas de memoria",
+    "precio": 30000,
+    "imagen": "img/vmu-dreamcast.jpg"
+  },
+  {
+    "id": "vmu-pro-dreamcast",
+    "titulo": "VMU Pro para Dreamcast",
+    "descripcion": "Unidad de memoria VMU Pro compatible con Dreamcast.",
+    "categoria": "Tarjetas de memoria",
+    "precio": 40000,
+    "imagen": "img/VMUpro-dreamcast.jpg"
+  },
+  {
+    "id": "cable-auxiliar-2-5",
+    "titulo": "Cable auxiliar de 2,5 mm",
+    "descripcion": "Cable auxiliar con conector de 2,5 mm.",
+    "categoria": "Conectores y cables",
+    "precio": 3000,
+    "imagen": "img/cable-aux2.5 A.jpg"
+  },
+  {
+    "id": "cable-video-rf-nes",
+    "titulo": "Cable de video RF para NES",
+    "descripcion": "Cable de conexión RF para consola NES.",
+    "categoria": "Conectores y cables",
+    "precio": 5000,
+    "imagen": "img/cable-video-RF-NES.jpg"
+  },
+  {
+    "id": "joystick-dreamcast",
+    "titulo": "Joystick para Dreamcast",
+    "descripcion": "Control compatible con la consola Sega Dreamcast.",
+    "categoria": "Joysticks y mandos",
+    "precio": 30000,
+    "imagen": "img/joystick-dreamcast.jpg"
+  },
+  {
+    "id": "joystick-palanca-2-botones",
+    "titulo": "Joystick de palanca con 2 botones",
+    "descripcion": "Joystick retro de palanca con dos botones.",
+    "categoria": "Joysticks y mandos",
+    "precio": 20000,
+    "imagen": "img/joystick-palanca-2-botones.jpg"
+  },
+  {
+    "id": "joystick-tipo-nintendo",
+    "titulo": "Joystick tipo Nintendo",
+    "descripcion": "Control retro de estilo Nintendo.",
+    "categoria": "Joysticks y mandos",
+    "precio": 5000,
+    "imagen": "img/joystick-tipo-nintendo.jpg"
+  },
+  {
+    "id": "memory-card-gamecube",
+    "titulo": "Memory Card para GameCube",
+    "descripcion": "Tarjeta de memoria para guardar partidas de Nintendo GameCube.",
+    "categoria": "Tarjetas de memoria",
+    "precio": 16000,
+    "imagen": "img/memory-card-gamecube.jpg"
+  }
+]
