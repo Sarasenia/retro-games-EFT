@@ -14,7 +14,7 @@ function ContenedorProductos() {
 
         const obtenerProductos = async () => {
             try {
-                const response = await fetch("https://dummyjson.com/c/6818-d15d-4cfb-b045", {
+                const response = await fetch("https://dummyjson.com/c/3029-d29f-4014-9fb4", {
                     signal: controller.signal
                 })
 
