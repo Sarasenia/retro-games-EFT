@@ -1,0 +1,45 @@
+.header2 {
+    text-align: center;
+    padding: 20px;
+    min-width: 0;
+}
+
+.sub1 {
+    padding: 10px;
+    color: rgb(0, 255, 255);
+    font-size: 25px;
+}
+
+.sub2 {
+    color: rgb(244, 89, 23);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.carousel-item img {
+    height: clamp(180px, 38vw, 360px);
+    width: 100%;
+    object-fit: contain; 
+    object-position: center;
+}
+
+.header2 .sub2 p {
+    max-width: 70ch;
+    margin: 0 auto;
+    padding: 10px;
+    color: rgb(240, 255, 166);
+    font-size: 15px;
+    text-align: justify;
+}
+
+@media (max-width: 575.98px) {
+    .sub1 {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+
+    .sub2,
+    .header2 .sub2 p {
+        font-size: 0.9rem;
+    }
+}

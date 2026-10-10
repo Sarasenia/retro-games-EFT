@@ -1,0 +1,55 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+        'header'
+        'hero'
+        'menu'
+        'products'
+        'footer';
+}
+
+.contenedor > .header {
+    grid-area: header;
+}
+
+.contenedor > .header2 {
+    grid-area: hero;
+}
+
+.contenedor > .menu {
+    grid-area: menu;
+    min-width: 0;
+}
+
+.contenedor > .principal {
+    grid-area: products;
+    min-width: 0;
+}
+
+.contenedor > .footer {
+    grid-area: footer;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.contenedor > .header,
+.contenedor > .header2,
+.contenedor > .menu,
+.contenedor > .principal,
+.contenedor > .footer {
+    border: 1px solid white;
+    padding: 10px;
+    background-color: black;
+}
+
+@media (max-width: 575.98px) {
+    .contenedor > .header,
+    .contenedor > .header2,
+    .contenedor > .menu,
+    .contenedor > .principal,
+    .contenedor > .footer {
+        padding: 8px;
+    }
+}

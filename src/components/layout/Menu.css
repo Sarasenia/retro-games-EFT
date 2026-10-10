@@ -1,0 +1,23 @@
+
+.navbar  .nav-link, 
+.navbar .dropdown-item {
+    font-size:0.876rem; 
+    margin-inline: 0.5rem;
+}
+
+
+.navbar .dropdown-menu :hover{
+    background-color: rgb(0, 21, 255);
+}
+
+.buscador{
+    width: 100%;
+    max-width: 32rem;
+}
+
+@media (max-width: 991.98px) {
+    .buscador {
+        max-width: none;
+        margin-top: 0.5rem;
+    }
+}

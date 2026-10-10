@@ -1,0 +1,27 @@
+.cont-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    justify-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+    max-width: 22rem;
+    margin: 0 !important;
+    text-align: center;
+}
+
+.card-img-top {
+    height: 200px;
+    padding: 5px;
+    background-color: #fdfbfb;
+    object-fit: contain;
+}
+
+.btn-primary {
+    border-color: rgb(255, 72, 0);
+    background-color: rgb(255, 72, 0);
+    color: rgb(255, 255, 0);
+}

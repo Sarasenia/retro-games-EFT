@@ -1,0 +1,16 @@
+.header {
+    font-size: 20px; 
+    flex-direction: column;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    line-height: 1.4;
+}
+
+.header > div > img {
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+}
