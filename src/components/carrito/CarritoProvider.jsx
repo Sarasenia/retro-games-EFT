@@ -8,12 +8,25 @@ export function CarritoProvider({ children }) {
 
     function agregarAlCarrito(producto) {
         setProductos((productosActuales) => {
-            if (productosActuales.some((item) => item.id === producto.id)) {
-                return productosActuales
+            const existente = productosActuales.find((item) => item.id === producto.id)
+            if (existente) {
+                return productosActuales.map((item) =>
+                    item.id === producto.id ? { ...item, cantidad: item.cantidad + 1 } : item
+                )
             }
 
-            return [...productosActuales, producto]
+            return [...productosActuales, { ...producto, cantidad: 1 }]
         })
+    }
+
+    function quitarUnaUnidad(idProducto) {
+        setProductos((productosActuales) =>
+            productosActuales.flatMap((producto) => {
+                if (producto.id !== idProducto) return [producto]
+                if (producto.cantidad <= 1) return [producto]
+                return [{ ...producto, cantidad: producto.cantidad - 1 }]
+            })
+        )
     }
 
     function quitarDelCarrito(idProducto) {
@@ -25,6 +38,7 @@ export function CarritoProvider({ children }) {
     const valor = {
         productos,
         agregarAlCarrito,
+        quitarUnaUnidad,
         quitarDelCarrito,
         abrirCarrito: () => setAbierto(true),
     }
@@ -34,7 +48,9 @@ export function CarritoProvider({ children }) {
         {abierto && (
             <CartPanel
                 productos={productos}
-                onQuitar={quitarDelCarrito}
+                onQuitar={quitarUnaUnidad}
+                onEliminar={quitarDelCarrito}
+                onAgregar={agregarAlCarrito}
                 onCerrar={() => setAbierto(false)}
             />
         )}

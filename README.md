@@ -1,105 +1,94 @@
 # RetroGames Store
 
-RetroGames Store es una tienda online enfocada en productos relacionados con videojuegos retro: juegos clásicos, consolas retro, conectores, accesorios y elementos para fanáticos del gaming vintage.
+Tienda demostrativa construida con React, Vite y Bootstrap. El catálogo retro se carga de forma asíncrona desde un archivo JSON del proyecto, con búsqueda en tiempo real, carrito con cantidades y total, y formulario de contacto con validación local.
 
-La aplicación está desarrollada con React, Vite y Bootstrap, y su objetivo es ofrecer una experiencia de compra simple, visual y moderna para productos de coleccionistas y usuarios interesados en la nostalgia del gaming.
+## Funcionalidades
 
-## Características
+- Carga asíncrona del catálogo desde `public/data/productos.json` mediante `fetch`.
+- Imágenes de consolas servidas localmente desde `public/img/`.
+- Búsqueda en tiempo real por nombre, descripción o categoría.
+- Carrito que conserva nombre, imagen, precio y cantidad de cada producto.
+- Precios del catálogo expresados en pesos chilenos (CLP).
+- Controles para aumentar/disminuir unidades, quitar artículos y consultar subtotales y total.
+- Estados visibles de carga, error con reintento y búsqueda sin resultados.
+- Validación local del asunto, correo, nombre y mensaje del formulario de contacto.
+- Diseño adaptable con Bootstrap y estilos propios.
+- Tarjetas de producto con selector de cantidad, precio y nombre.
 
-- Catálogo de productos con enfoque retro y gamer
-- Sección de consolas y accesorios
-- Visualización de juegos clásicos y productos relacionados
-- Carrito de compras funcional para agregar y quitar artículos
-- Formulario de contacto con validación local
-- Diseño responsive con estilo moderno y temático
-- Datos cargados desde DummyJSON para simular un e-commerce real
+## Interfaz del catálogo
 
-## Tecnologías utilizadas
+Las tarjetas usan las clases `card` y `btn` de Bootstrap junto con CSS Grid. Su fondo negro, texto amarillo y botones naranjas mantienen el tema retro del sitio.
 
-- React
+## Tecnologías
+
+- React y JavaScript
 - Vite
 - Bootstrap 5
-- JavaScript
-- CSS personalizado
+- JSON local servido por GitHub Pages
 
-## Requisitos
+## Requisitos y ejecución local
 
-Antes de ejecutar el proyecto necesitas tener instalado:
-
-- Node.js
-- npm
-- Un navegador web moderno
-
-## Instalación
-
-Dentro de la carpeta del proyecto, ejecuta los siguientes comandos:
+Se necesita Node.js y npm instalados.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Luego abre la URL que te indique Vite en tu navegador, normalmente:
+Abre la dirección local que informe Vite, normalmente `http://localhost:5173`.
 
-```text
-http://localhost:5173
-```
-
-## Scripts disponibles
+## Comandos disponibles
 
 ```bash
-npm run dev
-npm run build
-npm run preview
-npm run lint
+npm run dev      # Servidor de desarrollo
+npm run build    # Build de producción en dist/
+npm run preview  # Previsualizar la build
+npm run lint     # Revisar el código
 ```
 
-### Descripción de scripts
+## Editar el catálogo
 
-- `npm run dev`: inicia el servidor de desarrollo
-- `npm run build`: genera la versión de producción
-- `npm run preview`: previsualiza la build generada
-- `npm run lint`: ejecuta la validación de código
+Agrega o modifica productos en `public/data/productos.json`. Cada producto debe incluir `id`, `titulo`, `descripcion`, `categoria`, `precio` e `imagen`. El campo `imagen` es relativo a `public/`; por ejemplo, `img/gameCube.png` apunta a `public/img/gameCube.png`.
+
+Al desplegar, Vite antepone automáticamente la base del sitio a las rutas del JSON y de las imágenes, por lo que funciona tanto en local como en GitHub Pages.
+
+## Estructura
+
+```text
+public/
+├── data/productos.json             Catálogo editable de consolas
+└── img/                             Imágenes locales de consolas y encabezado
+src/
+├── components/
+│   ├── Productos/
+│   │   ├── ContenedorProductos.jsx Carga, estados y filtro del catálogo
+│   │   ├── ListaProductos.jsx      Renderizado separado de las tarjetas
+│   │   └── TarjetaProducto.jsx     Tarjeta individual y acción de carrito
+│   ├── carrito/                    Estado y contexto del carrito
+│   ├── layout/                     Encabezado, navegación y estructura
+│   ├── CartPanel.jsx               Resumen, cantidades y totales
+│   └── ...
+├── services/
+│   └── productos.js                Petición y validación del JSON local
+├── App.jsx
+└── main.jsx
+.github/workflows/deploy.yml        Compilación y despliegue a GitHub Pages
+vite.config.js
+```
 
 ## Despliegue en GitHub Pages
 
-El workflow de GitHub Actions construye y publica automáticamente la aplicación en cada push a `main`. En el repositorio, configura **Settings > Pages > Build and deployment > Source** como **GitHub Actions**.
+El workflow de GitHub Actions construye la aplicación y publica `dist/` al hacer push a `main`. En **Settings > Pages > Build and deployment**, la fuente debe ser **GitHub Actions**.
 
-La aplicación queda disponible en `https://sarasenia.github.io/retro-games-EFT/`.
+Sitio: <https://sarasenia.github.io/retro-games-EFT/>
 
-## Estructura del proyecto
+## Evidencias para la entrega
 
-```text
-retro-games/
-├── public/
-│   └── img/
-├── src/
-│   ├── components/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   └── index.css
-├── index.html
-├── package.json
-├── vite.config.js
-├── README.md
-└── .gitignore
-```
+Captura estas vistas desde el navegador y adjúntalas en la plataforma de entrega:
 
-## Funcionalidad principal
+1. `catalogo.png`: catálogo cargado desde el JSON con productos e imágenes locales.
+2. `busqueda.png`: búsqueda escrita y tarjetas filtradas.
+3. `carrito.png`: artículo con más de una unidad, controles de cantidad, subtotal y total.
+4. `error-catalogo.png`: estado de error con el botón **Reintentar** (se puede verificar temporalmente sin conexión).
 
-La tienda permite:
-
-- explorar productos del catálogo
-- seleccionar artículos de interés
-- agregarlos al carrito de compras
-- gestionarlos desde el carrito
-- navegar una interfaz intuitiva para una experiencia de compra fluida
-
-## Datos e imágenes
-
-Los productos se obtienen desde la API de DummyJSON configurada en `vite.config.js`. Las imágenes del catálogo se almacenan en `public/img/` para mantener una estructura clara y visualmente consistente.
-
-## Objetivo del proyecto
-
-RetroGames Store busca recrear una experiencia de e-commerce para el mercado de videojuegos retro, combinando nostalgia, diseño atractivo y funcionalidad práctica para la compra de productos del mundo gamer clásico.
+El JSON es estático: para actualizar el catálogo publicado, modifica el archivo y vuelve a desplegar el sitio.

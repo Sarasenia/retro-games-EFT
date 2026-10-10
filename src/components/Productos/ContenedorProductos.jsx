@@ -1,58 +1,60 @@
-import TarjetaProducto from "./TarjetaProducto.jsx"
 import "./ContenedorProductos.css"
-import IndicadorCarga from "../IndicadorCarga.jsx"
-import React, { useEffect } from "react"
+import { useEffect, useMemo, useState } from 'react'
+import IndicadorCarga from '../IndicadorCarga.jsx'
+import { cargarProductos } from '../../services/productos.js'
+import mostrarProductos from './ListaProductos.jsx'
 
-
-function ContenedorProductos() {
-    const [cargando, setCargando] = React.useState(true)
-    const [error, setError] = React.useState(false)
-    const [productos, setProductos] = React.useState([])
+function ContenedorProductos({ terminoBusqueda }) {
+    const [productos, setProductos] = useState([])
+    const [cargando, setCargando] = useState(true)
+    const [error, setError] = useState('')
+    const [intento, setIntento] = useState(0)
 
     useEffect(() => {
         const controller = new AbortController()
 
-        const obtenerProductos = async () => {
+        async function obtenerProductos() {
+            setCargando(true)
+            setError('')
+
             try {
-                const response = await fetch("https://dummyjson.com/c/3029-d29f-4014-9fb4", {
-                    signal: controller.signal
-                })
-
-                if (!response.ok)
-                    throw new Error("Error en la respuesta del servidor")
-
-                const data = await response.json()
-                if (!Array.isArray(data)) {
-                    throw new Error("La respuesta no contiene una lista de productos")
+                const productosCargados = await cargarProductos({ signal: controller.signal })
+                setProductos(productosCargados)
+            } catch (errorCarga) {
+                if (errorCarga.name !== 'AbortError') {
+                    console.error('No se pudo cargar el catálogo local.', errorCarga)
+                    setError('No se pudo cargar el catálogo. Comprueba la conexión e inténtalo de nuevo.')
                 }
-                setProductos(data)
-            }
-            catch (err) {
-                if (err.name !== 'AbortError') {
-                    setError(true)
-                }
-            }
-            finally {
-                setCargando(false)
+            } finally {
+                if (!controller.signal.aborted) setCargando(false)
             }
         }
 
         obtenerProductos()
-
         return () => controller.abort()
-    }, [])
+    }, [intento])
+
+    const productosFiltrados = useMemo(() => {
+        const consulta = terminoBusqueda.trim().toLocaleLowerCase()
+        if (!consulta) return productos
+
+        return productos.filter((producto) =>
+            [producto.titulo, producto.descripcion, producto.categoria]
+                .some((campo) => campo?.toLocaleLowerCase().includes(consulta))
+        )
+    }, [productos, terminoBusqueda])
 
     if (cargando) return <IndicadorCarga />
-    if (error) return <p role="alert">No se pudieron cargar los productos.</p>
+    if (error) {
+        return <div role="alert">
+            <p>{error}</p>
+            <button className="btn btn-primary" type="button" onClick={() => setIntento((valor) => valor + 1)}>
+                Reintentar
+            </button>
+        </div>
+    }
 
-    return <div className="cont-tarjetas w-100">
-        {productos.map(producto =>
-            <TarjetaProducto
-                key={producto.id}
-                producto={producto}
-            />
-        )}
-    </div>
+    return mostrarProductos(productosFiltrados)
 }
 
 export default ContenedorProductos

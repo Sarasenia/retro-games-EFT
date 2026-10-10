@@ -5,13 +5,4 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/retro-games-EFT/',
   plugins: [react()],
-  server: {
-    proxy: {
-      '/api/productos': {
-        target: 'https://dummyjson.com',
-        changeOrigin: true,
-        rewrite: () => '/c/6818-d15d-4cfb-b045',
-      },
-    },
-  },
 })

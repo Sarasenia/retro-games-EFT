@@ -1,9 +1,9 @@
 import "./Principal.css"
 import ContenedorProductos from "../Productos/ContenedorProductos.jsx"
 
-function Principal(){
+function Principal({ terminoBusqueda }){
     return <div className="principal">
-        <ContenedorProductos />
+        <ContenedorProductos terminoBusqueda={terminoBusqueda} />
     </div>
 }
 

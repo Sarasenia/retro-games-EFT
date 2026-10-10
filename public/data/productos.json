@@ -1,0 +1,50 @@
+[
+  {
+    "id": "gamecube",
+    "titulo": "Nintendo GameCube",
+    "descripcion": "Consola de sobremesa de Nintendo",
+    "categoria": "Consolas",
+    "precio": 70000,
+    "imagen": "img/gameCube.png"
+  },
+  {
+    "id": "game-boy-advance",
+    "titulo": "Game Boy Advance",
+    "descripcion": "Consola portátil de Nintendo",
+    "categoria": "Consolas portátiles",
+    "precio": 60000,
+    "imagen": "img/gameBoyAdvance.jpg"
+  },
+  {
+    "id": "game-boy",
+    "titulo": "Game Boy",
+    "descripcion": "Consola portátil clásica de Nintendo",
+    "categoria": "Consolas portátiles",
+    "precio": 45000,
+    "imagen": "img/gameBoy.jpg"
+  },
+  {
+    "id": "dreamcast",
+    "titulo": "Sega Dreamcast",
+    "descripcion": "Consola de sobremesa de Sega",
+    "categoria": "Consolas",
+    "precio": 80000,
+    "imagen": "img/dreamcast.jpg"
+  },
+  {
+    "id": "playstation-1",
+    "titulo": "PlayStation 1",
+    "descripcion": "Consola clásica de Sony",
+    "categoria": "Consolas",
+    "precio": 65000,
+    "imagen": "img/ps1.png"
+  },
+  {
+    "id": "nintendo-ds",
+    "titulo": "Nintendo DS",
+    "descripcion": "Consola portátil de doble pantalla de Nintendo",
+    "categoria": "Consolas portátiles",
+    "precio": 75000,
+    "imagen": "img/nintendoDS.png"
+  }
+]

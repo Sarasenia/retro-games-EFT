@@ -12,9 +12,10 @@
     height: 100%;
     overflow-y: auto;
     padding: 24px;
-    color: #212529;
-    background-color: #fff;
-    font-family: system-ui, sans-serif;
+    border-left: 2px solid #ff0;
+    color: #ff0;
+    background-color: #000;
+    font-family: 'Press Start 2P', monospace;
 }
 
 .carrito-encabezado,
@@ -36,7 +37,34 @@
 }
 
 .carrito-encabezado h2 {
-    font-size: 1.4rem;
+    font-size: 0.75rem;
+    line-height: 1.8;
+}
+
+.carrito-panel .btn {
+    border-radius: 0.25rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.5rem;
+}
+
+.carrito-panel .btn-outline-secondary {
+    border-color: #ff0;
+    color: #ff0;
+}
+
+.carrito-panel .btn-outline-secondary:hover:not(:disabled) {
+    background: #ff0;
+    color: #000;
+}
+
+.carrito-panel .btn-outline-danger {
+    border-color: #ff4800;
+    color: #ff8a65;
+}
+
+.carrito-panel .btn-outline-danger:hover {
+    background: #ff4800;
+    color: #ff0;
 }
 
 .carrito-lista {
@@ -58,14 +86,23 @@
 }
 
 .carrito-producto h3 {
-    font-size: 1rem;
+    font-size: 0.55rem;
+    line-height: 1.8;
+}
+
+.carrito-producto button {
+    flex-shrink: 0;
 }
 
 .carrito-producto p {
     margin: 4px 0 0;
+    font-size: 0.45rem;
+    line-height: 1.8;
 }
 
 .carrito-total {
     margin-top: 24px;
     text-align: right;
+    font-size: 0.65rem;
+    line-height: 1.8;
 }

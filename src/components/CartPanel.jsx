@@ -1,7 +1,8 @@
 import './CartPanel.css'
 
-function CartPanel({ productos, onQuitar, onCerrar }) {
-    const total = productos.reduce((suma, producto) => suma + producto.precio, 0)
+function CartPanel({ productos, onQuitar, onEliminar, onAgregar, onCerrar }) {
+    const totalUnidades = productos.reduce((suma, producto) => suma + producto.cantidad, 0)
+    const total = productos.reduce((suma, producto) => suma + producto.precio * producto.cantidad, 0)
     const totalFormateado = total.toLocaleString('es-CL', {
         style: 'currency',
         currency: 'CLP',
@@ -16,7 +17,7 @@ function CartPanel({ productos, onQuitar, onCerrar }) {
             onClick={(evento) => evento.stopPropagation()}
         >
             <div className="carrito-encabezado">
-                <h2 id="titulo-carrito">Tu carrito ({productos.length})</h2>
+                <h2 id="titulo-carrito">Tu carrito ({totalUnidades})</h2>
                 <button className="btn btn-outline-secondary" type="button" onClick={onCerrar}>
                     Cerrar
                 </button>
@@ -32,15 +33,37 @@ function CartPanel({ productos, onQuitar, onCerrar }) {
                                 <img src={producto.imagen} alt="" />
                                 <div>
                                     <h3>{producto.titulo}</h3>
-                                    <p>{producto.precio.toLocaleString('es-CL', {
+                                    <p>Precio unitario: {producto.precio.toLocaleString('es-CL', {
+                                        style: 'currency',
+                                        currency: 'CLP',
+                                    })}</p>
+                                    <p>Cantidad: {producto.cantidad}</p>
+                                    <p>Subtotal: {(producto.precio * producto.cantidad).toLocaleString('es-CL', {
                                         style: 'currency',
                                         currency: 'CLP',
                                     })}</p>
                                 </div>
                                 <button
-                                    className="btn btn-outline-danger"
+                                    className="btn btn-outline-secondary"
                                     type="button"
                                     onClick={() => onQuitar(producto.id)}
+                                    disabled={producto.cantidad <= 1}
+                                    aria-label={`Quitar una unidad de ${producto.titulo}`}
+                                >
+                                    −
+                                </button>
+                                <button
+                                    className="btn btn-outline-secondary"
+                                    type="button"
+                                    onClick={() => onAgregar(producto)}
+                                    aria-label={`Agregar una unidad de ${producto.titulo}`}
+                                >
+                                    +
+                                </button>
+                                <button
+                                    className="btn btn-outline-danger"
+                                    type="button"
+                                    onClick={() => onEliminar(producto.id)}
                                     aria-label={`Quitar ${producto.titulo} del carrito`}
                                 >
                                     Quitar

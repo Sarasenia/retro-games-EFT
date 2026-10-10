@@ -1,7 +1,7 @@
  import "./Menu.css"
 
 
-function Menu(){
+function Menu({ terminoBusqueda, onCambiarBusqueda }){
     return <nav className="navbar navbar-expand-lg bg-dark mt-3" data-bs-theme="dark">
         <div className="container-fluid">
             <a className="navbar-brand" href="#">Menú</a>
@@ -29,10 +29,12 @@ function Menu(){
                     </li>
 
                 </ul>
-                <form className="d-flex buscador" role="search">
-                    <input id="buscador" className="form-control me-2" type="search" placeholder="Iniciar la búsqueda"
-                        aria-label="Search" />
-                    <button className="btn btn-outline-success" type="submit">Buscar</button>
+                <form className="d-flex buscador" role="search" onSubmit={(evento) => evento.preventDefault()}>
+                    <input id="buscador" className="form-control me-2" type="search" placeholder="Buscar productos"
+                        aria-label="Buscar productos" value={terminoBusqueda} onChange={(evento) => onCambiarBusqueda(evento.target.value)} />
+                    {terminoBusqueda && <button className="btn btn-outline-light" type="button" onClick={() => onCambiarBusqueda('')}>
+                        Limpiar
+                    </button>}
                 </form>
 
             </div>

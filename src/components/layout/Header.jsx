@@ -3,6 +3,7 @@ import { useCarrito } from "../carrito/useCarrito"
 
 function Header(){
     const { productos, abrirCarrito } = useCarrito()
+    const cantidadTotal = productos.reduce((total, producto) => total + producto.cantidad, 0)
 
     return <div className="container">
         <div className="row align-items-center py-3">
@@ -15,7 +16,7 @@ function Header(){
             <div className="col-6 col-md-4 text-center text-md-end">
                 <button className="btn btn-primary position-relative" type="button" onClick={abrirCarrito}>
                     Carrito
-                    <span className="badge text-bg-light ms-2">{productos.length}</span>
+                    <span className="badge text-bg-light ms-2">{cantidadTotal}</span>
                     <span className="visually-hidden"> productos en el carrito</span>
                 </button>
             </div>
