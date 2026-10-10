@@ -61,6 +61,12 @@ npm run lint
 - `npm run preview`: previsualiza la build generada
 - `npm run lint`: ejecuta la validación de código
 
+## Despliegue en GitHub Pages
+
+El workflow de GitHub Actions construye y publica automáticamente la aplicación en cada push a `main`. En el repositorio, configura **Settings > Pages > Build and deployment > Source** como **GitHub Actions**.
+
+La aplicación queda disponible en `https://sarasenia.github.io/retro-games-EFT/`.
+
 ## Estructura del proyecto
 
 ```text
